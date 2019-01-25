@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     const inventory = this.state.inventory
       .map((meme, index) => (
-       <InventoryItem meme={meme}/>
+        <InventoryItem meme={meme} key={index} />
       ));
 
     return (

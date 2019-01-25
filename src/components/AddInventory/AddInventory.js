@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AddInventory.css';
 
 class AddInventory extends Component {
   state = {
@@ -17,31 +18,34 @@ class AddInventory extends Component {
   
   render() {
     return (
-    <form onSubmit={(event) => this.handleSubmit(event)}>
-        <label>
-        Name:
-        <input
-            type="text"
-            value={this.state.name}
-            onChange={this.handleNameChange} />
-        </label>
-        <label>
-        Image:
-        <input type="text"
-                value={this.state.image}
-                onChange={this.handleImageChange}  
-                />
-        </label>
-        <label>
-        Quantity:
-        <input 
-            type="number"
-            value={this.state.quantity}
-            onChange={this.handleQuantityChange}
-            />
-        </label>
-        <button type="submit">Add</button>
-    </form>
+        <div className="add-inventory">
+            <h2>Add a meme</h2>
+        
+            <form onSubmit={(event) => this.handleSubmit(event)}>
+                <label>
+                    <div className="label">Name:</div>
+                    <input
+                        type="text"
+                        value={this.state.name}
+                        onChange={this.handleNameChange} />
+                </label>
+                <label>
+                    <div className="label">Image:</div>
+                    <input
+                        type="text"
+                        value={this.state.image}
+                        onChange={this.handleImageChange} />
+                </label>
+                <label>
+                    <div className="label">Quantity:</div>
+                    <input 
+                        type="number"
+                        value={this.state.quantity}
+                        onChange={this.handleQuantityChange} />
+                </label>
+                <button type="submit">Add</button>
+            </form>
+        </div>
     );
   }
 

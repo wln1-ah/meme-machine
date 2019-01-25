@@ -1,0 +1,60 @@
+.add-inventory {
+    background-color: #0d4e04;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-inventory h2 {
+    margin-bottom: 50px;
+}
+
+.add-inventory form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    margin-left: 30px;
+}
+
+.add-inventory label {
+    margin-bottom: 1em;
+    width: 100%;
+    display: block;
+}
+
+.add-inventory .label {
+    font-size: 14px;
+    color: #ddd;
+    text-align: left;
+    margin-bottom: .3em;
+}
+
+.add-inventory input {
+    width: 100%;
+    font-size: 20px;
+    padding: .1em .3em;
+    border-radius: 2px;
+    border: 2px solid #a8c081;
+    box-sizing: border-box;
+}
+
+.add-inventory button {
+    color: #fff;
+    border: 2px solid #78b447;
+    background-color: transparent;
+    align-self: flex-end;
+    padding: .4em .8em;
+    border-radius: 1px;
+    text-transform: capitalize;
+}
+
+.add-inventory button:focus {
+    outline: 0;
+    font-weight: bold;
+    box-shadow: 0 0 3px 2px #6780b3;
+}

@@ -1,0 +1,25 @@
+.inventory-item {
+    background-color: #fff;
+    box-shadow: 0 2px 5px #8f9c90;
+    max-width: 400px;
+
+    box-sizing: border-box;
+    padding: 45px 60px;
+
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.inventory-item > img {
+    max-width: 100%;
+}
+
+.inventory-item h3 {
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.inventory-item .quantity {
+    float: right;
+}
