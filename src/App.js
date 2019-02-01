@@ -8,15 +8,11 @@ import axios from 'axios';
 class App extends Component {
   state = {
     inventory: [],
-    people: [],
   };
 
   componentWillMount() {
     axios.get('https://swapi.co/api/people/')
       .then(response => {
-        this.setState({
-          people: response.data.results,
-        });
       });
   }
   
@@ -26,18 +22,6 @@ class App extends Component {
         <InventoryItem meme={meme} key={index} />
       ));
 
-    const people = this.state.people
-        .map((person, i) => {
-          return (
-            <tr key={i}>
-              <td>{ person.name }</td>
-              <td>{ person.height }</td>
-              <td>{ person.hair_color }</td>
-              <td>{ person.birth_year }</td>
-            </tr>
-          );
-        })
-
     return (
       <div className="App">
         <AddInventory onAdd={item => this.addToInventory(item)} />
@@ -45,20 +29,6 @@ class App extends Component {
         <ul>
           {inventory}
         </ul>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Height</th>
-              <th>Hair Color</th>
-              <th>Birth Year</th>
-            </tr>
-          </thead>
-          <tbody>
-            { people }
-          </tbody>
-        </table>
       </div>
     );
   }
