@@ -15,7 +15,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-
 app.get('/api/memes', (request, response) => {
     response.send(memes);
 });

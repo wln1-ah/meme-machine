@@ -11,15 +11,22 @@ class App extends Component {
   };
 
   componentWillMount() {
-    axios.get('https://swapi.co/api/people/')
+    axios.get('http://localhost:8000/api/memes')
       .then(response => {
+        this.setState({
+          inventory: response.data,
+        });
       });
   }
   
   render() {
     const inventory = this.state.inventory
       .map((meme, index) => (
-        <InventoryItem meme={meme} key={index} />
+        <InventoryItem
+          meme={meme}
+          key={index}
+          onUpdate={update => this.updateItem(meme.id, update)}
+          onDelete={() => this.deleteItem(meme.id)} />
       ));
 
     return (
@@ -34,13 +41,30 @@ class App extends Component {
   }
 
   addToInventory(item) {
-    const { inventory } = this.state;
-    
-    inventory.push(item);
+    axios.post('http://localhost:8000/api/memes', item)
+      .then(response => {
+        this.setState({
+          inventory: response.data,
+        });
+      });
+  }
 
-    this.setState({
-      inventory,
-    });
+  updateItem(id, update) {
+    axios.put('http://localhost:8000/api/memes/' + id, update)
+      .then(response => {
+        this.setState({
+          inventory: response.data,
+        });
+      });
+  }
+
+  deleteItem(id) {
+    axios.delete('http://localhost:8000/api/memes/' + id)
+      .then(response => {
+        this.setState({
+          inventory: response.data,
+        });
+      });
   }
 }
 
