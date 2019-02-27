@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './AddInventory.css';
 
+import axios from 'axios';
+
 class AddInventory extends Component {
   state = {
     name:"",
@@ -72,17 +74,14 @@ class AddInventory extends Component {
 
     const { name, quantity, image } = this.state;
 
-    this.props.onAdd({
+    axios.post('http://localhost:8000/api/memes', {
       name,
       quantity,
       image,
-    });
-
-    this.setState({
-      name: '',
-      image: '',
-      quantity: 0,
-    });
+    })
+      .then(() => {
+        this.props.history.push('/inventory');
+      });
   }
 }
 

@@ -1,8 +1,18 @@
+require('dotenv').config({ path: __dirname + '/.env' });
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const massive = require('massive');
 
 const app = express();
+
+massive(process.env.DB_CONNECTION_STRING, { scripts: __dirname + '/db' })
+    .then(dbInstance => {
+        app.set('db', dbInstance);
+    })
+    .catch(e => {
+        console.error(e);
+    });
 
 const memes = [];
 const getNewId = (() => {
@@ -15,18 +25,26 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-app.get('/api/memes', (request, response) => {
-    response.send(memes);
+app.get('/api/memes', (req, res) => {
+    const db = app.get('db');
+
+    db.Memes.find()
+        .then(memes => {
+            res.send(memes);
+        });
 });
 
 app.post('/api/memes', (req, res) => {
+    const db = app.get('db');
     const newMeme = req.body;
-    newMeme.id = getNewId();
-
-    memes.push(newMeme);
-
-    res.send(memes);
-    // res.send(newMeme);
+    
+    db.Memes.insert(newMeme)
+        .then(() => {
+            return db.Memes.find();
+        })
+        .then(memes => {
+            res.status(201).send(memes);
+        });
 });
 
 app.put('/api/memes/:id', (req, res) => {
