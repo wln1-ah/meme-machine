@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './InventoryList.css';
 import InventoryItem from '../InventoryItem/InventoryItem';
 
 class InventoryList extends Component {
@@ -25,7 +26,9 @@ class InventoryList extends Component {
                     key={index} />
             ));
         
-        return inventory;
+        return (
+            <div className="inventory-list">{inventory}</div>
+        );
     }
 }
 

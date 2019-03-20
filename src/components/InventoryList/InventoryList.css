@@ -1,0 +1,48 @@
+.inventory-list {
+    display: grid;
+    grid-template-columns: 400px;
+    grid-gap: 20px;
+}
+
+@media (min-width: 839px) {
+    .inventory-list {
+        grid-template-columns: repeat(2, 400px);
+    }
+}
+
+@media (min-width: 1258px) {
+    .inventory-list {
+        grid-template-columns: repeat(3, 400px);
+    }
+}
+
+@media (min-width: 1661px) {
+    .inventory-list {
+        grid-template-columns: repeat(4, 400px);
+    }
+}
+
+
+/* .inventory-list {
+    display: grid;
+    grid-template-columns: repeat(4, 400px);
+    grid-gap: 20px;
+}
+
+@media (max-width: 1661px) {
+    .inventory-list {
+        grid-template-columns: repeat(3, 400px);
+    }
+}
+
+@media (max-width: 1258px) {
+    .inventory-list {
+        grid-template-columns: repeat(2, 400px);
+    }
+}
+
+@media (max-width: 839px) {
+    .inventory-list {
+        grid-template-columns: 400px;
+    }
+} */

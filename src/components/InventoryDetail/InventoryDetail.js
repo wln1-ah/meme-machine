@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './InventoryDetail.css';
+
 class InventoryDetail extends Component {
     state = {
         meme: {},
@@ -16,7 +18,7 @@ class InventoryDetail extends Component {
     }
 
     render() {
-        return <pre>{JSON.stringify(this.state.meme, null, 16)}</pre>;
+        return <pre className="inventory-detail">{JSON.stringify(this.state.meme, null, 16)}</pre>;
     }
 }
 

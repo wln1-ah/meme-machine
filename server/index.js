@@ -81,14 +81,17 @@ app.delete('/api/memes/:id', (req, res) => {
 
 app.get('/api/memes/:id', (req, res) => {
     const { id } = req.params;
+    const db = app.get('db');
 
-    const meme = memes.find(m => m.id == id);
+    db.Memes.find(id)
+        .then(meme => {
+            if (!meme) {
+                return res.status(404).send({ message: 'No meme found with id ' + id });
+            }
+        
+            res.send(meme);
+        });
 
-    if (!meme) {
-        return res.status(404).send({ message: 'No meme found with id ' + id });
-    }
-
-    res.send(meme);
 });
 
 

@@ -1,0 +1,6 @@
+@media print {
+    .inventory-detail {
+        text-align: left;
+        font-size: 20px;
+    }
+}

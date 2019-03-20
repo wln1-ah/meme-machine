@@ -6,12 +6,11 @@
     box-sizing: border-box;
     padding: 45px 60px;
 
-    display: inline-block;
     text-align: center;
     border-radius: 3px;
 }
 
-.inventory-item > img {
+.inventory-item img {
     max-width: 100%;
 }
 
