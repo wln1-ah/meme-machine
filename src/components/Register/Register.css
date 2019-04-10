@@ -1,0 +1,32 @@
+.register-component {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-component form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 3px 5px #3358;
+    width: max-content;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 5px;
+}
+
+.register-component h2 {
+    margin-top: 0;
+    line-height: 1;
+}
+
+.register-component label,
+.register-component input {
+    width: 100%;
+}
+
+.register-component label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}

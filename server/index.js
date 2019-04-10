@@ -62,10 +62,10 @@ passport.use('register', new LocalStrategy({
         });
 }));
 
-passport.use('login', new LocalStrategy((username, password, done) => {
+passport.use('login', new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
     const db = app.get('db');
 
-    db.Users.find({ username })
+    db.Users.find({ email })
         .then(users => {
             if (users.length == 0) {
                 return done('Username or password is incorrect');
@@ -132,7 +132,16 @@ app.post('/auth/register', passport.authenticate('register'), (req, res) => {
 
 app.post('/auth/login', passport.authenticate('login'), (req, res) => {
     res.send({ message: 'Successfully logged in', user: req.user });
-})
+});
+
+app.get('/auth/logout', (req, res) => {
+    req.logout();
+    res.sendStatus(200);
+});
+
+app.get('/api/me', (req, res) => {
+    res.send(req.user);
+});
 
 app.get('/api/memes', (req, res) => {
     const db = app.get('db');
@@ -147,7 +156,7 @@ app.post('/api/memes', (req, res) => {
     if (!req.isAuthenticated()) {
         return res.status(401).send({ message: 'Please log in before continuing' });
     }
-    5
+    
     const db = app.get('db');
     const newMeme = req.body;
     

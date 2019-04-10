@@ -1,0 +1,32 @@
+.login-component {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-component form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 3px 5px #3358;
+    width: max-content;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 5px;
+}
+
+.login-component h2 {
+    margin-top: 0;
+    line-height: 1;
+}
+
+.login-component label,
+.login-component input {
+    width: 100%;
+}
+
+.login-component label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}

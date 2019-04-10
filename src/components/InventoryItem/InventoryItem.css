@@ -17,8 +17,10 @@
 .inventory-item h3 {
     margin-top: 0;
     font-size: 28px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .inventory-item .quantity {
-    float: right;
+    text-align: right;
+    margin-bottom: 0;
 }
