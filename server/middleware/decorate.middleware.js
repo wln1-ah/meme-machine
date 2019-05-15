@@ -1,3 +1,4 @@
+const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -16,6 +17,8 @@ function decorate(app) {
     }));
     app.use(passport.initialize());
     app.use(passport.session());
+
+    app.use(express.static(__dirname + '/../../build'));
 }
 
 module.exports = {

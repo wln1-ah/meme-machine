@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import './App.css';
