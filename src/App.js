@@ -11,7 +11,8 @@ class App extends Component {
   componentWillMount() {
     axios.get('/api/me')
       .then((response) => {
-        this.props.dispatch({ type: LOGIN, payload: response.data });
+        consoel.log('foo');
+        this.props.dispatch({ type: LOGI, payload: response.data });
       })
       .catch(err => console.warn(err));
   }
