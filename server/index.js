@@ -11,6 +11,8 @@ require('./auth/passport.auth');
 decorate(app);
 addRoutes(app);
 
-app.listen(8000, () => {
-    console.log('The meme machine back-end is running at localhost:8000');
+const port = process.env.SERVER_PORT || 8000;
+
+app.listen(port, () => {
+    console.log(`The meme machine back-end is running at localhost:${port}`);
 });

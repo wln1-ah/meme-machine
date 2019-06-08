@@ -5,11 +5,23 @@ const registerStrategy = new LocalStrategy({ passReqToCallback: true }, (req, us
     const db = req.db;
     const { email } = req.body;
 
-    db.query(`
-        select * from "Users"
-        where email ilike \${email}
-            OR username ilike \${username}
-    `, { username, email })
+    // non-query version:
+    db.Users.find({
+        or: [
+            {
+                'email ilike': email,
+            },
+            {
+                'username ilike': username,
+            },
+        ],
+    })
+    // previously, we did this:
+    // db.query(`
+    //     select * from "Users"
+    //     where email ilike \${email}
+    //         OR username ilike \${username}
+    // `, { username, email })
         .then(users => {
             if (users.length > 0) {
                 return done('Username or email is already in use');

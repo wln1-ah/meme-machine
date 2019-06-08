@@ -1,9 +1,9 @@
 require('dotenv').config({ path: __dirname + '/.env' });
-const massive = require('massive');
+const { connectToDb } = require('./db/bootstrap.database');
 
 let db;
 
-massive(process.env.DB_CONNECTION_STRING, { scripts: __dirname + '/db' })
+connectToDb()
     .then(dbInstance => {
         db = dbInstance;
         return db.setup.create_roles_table();
