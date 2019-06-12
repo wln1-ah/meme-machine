@@ -3,6 +3,8 @@ const passport = require('passport');
 
 const AuthRouter = express.Router();
 
+// every path inside of this file implicitly has an '/auth' in front of it
+
 AuthRouter.post(
     '/register',
     passport.authenticate('register', { failWithError: true }),

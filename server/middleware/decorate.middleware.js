@@ -7,6 +7,7 @@ const passport = require('passport');
 const { addDb } = require('./add-db.middleware');
 
 function decorate(app) {
+    // request from app goes through this in sequence
     app.use(cors());
     app.use(bodyParser.json());
     app.use(addDb());

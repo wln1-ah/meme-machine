@@ -16,18 +16,18 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
     connectToDb()
         .then(db => {
-        db.Users.find(id)
-            .then(user => {
-                if (!user) return done(null, undefined);
-    
-                delete user.password;
-    
-                return done(null, user);
-            })
-            .catch(err => {
-                console.warn(err);
-                done('System failure');
-            });
+            db.Users.find(id)
+                .then(user => {
+                    if (!user) return done(null, undefined);
+        
+                    delete user.password;
+        
+                    return done(null, user);
+                })
+                .catch(err => {
+                    console.warn(err);
+                    done('System failure');
+                });
         })
         .catch(err => {
             done('System failure');
